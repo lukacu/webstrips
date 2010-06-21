@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="wrap" name="WebStrips Comic Bundle maker">
+    <target name="init">
+    	<fail unless="comic" message="You must define comic with -Dcomic=[name]" />
+    </target>
+    <target name="wrap" depends="init">
+        <echo message="Wrapping up..."/>
+        <zip destfile="${comic}.comic">
+        	<fileset dir="${comic}" includes="description.ini,comic.js,image.png"/>
+  		</zip>
+    </target>
+</project>
