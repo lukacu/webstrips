@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="org.webstrips.android">
+	
+	<application android:allowClearUserData="true"
+		android:hasCode="true" android:debuggable="true" android:icon="@drawable/icon"
+		android:name="WebStripsAndroid" android:description="@string/description"
+		android:label="@string/title">
+		<service android:name="WebStripsService" android:enabled="true"></service>
+		<activity android:name="ComicListActivity" android:launchMode="singleTask" android:allowTaskReparenting="false">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+
+			</intent-filter>
+		</activity>
+		
+		<activity android:name="ComicViewerActivity" android:launchMode="singleTask" android:allowTaskReparenting="false">
+			<intent-filter>
+
+			<action android:name="org.webstrips.VIEW"></action>
+</intent-filter>
+		</activity>
+
+		<activity android:name="ComicImportActivity"
+			android:screenOrientation="portrait" android:label="@string/import.title">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="file" android:mimeType="*/*" android:pathPattern=".*\\.comic" android:host="*"></data>
+				<data android:pathPrefix="/raw-attachment/wiki/Comics" android:host="webstrips.tnode.com" android:scheme="http" android:mimeType="*/*"></data>
+			</intent-filter>
+		</activity>
+	</application>
+	<uses-permission android:name="android.permission.DELETE_CACHE_FILES" />
+	<uses-permission android:name="android.permission.INTERNET" />
+<uses-sdk android:minSdkVersion="3"></uses-sdk>
+</manifest>

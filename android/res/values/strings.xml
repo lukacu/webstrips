@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="title">WebStrips</string>
+<string name="description">A flexible web comic browser</string>
+<string name="menu.list">Comics list</string>
+<string name="menu.webpage">Goto</string>
+<string name="menu.list_short">Comics</string>
+<string name="menu.webpage_short">View online</string>
+<string name="menu.first">First strip</string>
+<string name="menu.newest">Newest strip</string>
+<string name="menu.first_short">First</string>
+<string name="menu.newest_short">Newest</string>
+<string name="menu.previous">Previous strip</string>
+<string name="menu.previous_short">Previous</string>
+<string name="menu.next">Next strip</string>
+<string name="menu.next_short">Next</string>
+
+<string name="viewer.error_title">Comic error</string>
+<string name="viewer.error_message">The "%1$s" engine encountered an irrecoverable error and has to be closed.</string>
+
+<string name="import.title">WebStrips comic import</string>
+<string name="import.heading">Import comic?</string>
+<string name="import.question">Do you want to import comic %1$s by %2$s?</string>
+
+<string name="import.error.title">Import error</string>
+<string name="import.error.body">WebStrips cannot import this file as a comic bundle. Probably it is corrupt or inappropriate.</string>
+
+
+<string name="list.info">More information</string>
+<string name="list.info_short">Info</string>
+<string name="list.webpage">Visit online</string>
+<string name="list.webpage_short">Webpage</string>
+<string name="list.remove">Remove comic</string>
+<string name="list.remove_short">Remove</string>
+<string name="list.browse">Browse comic</string>
+<string name="list.browse_short">Browse</string>
+
+<string name="comic.removed">Comic %1$s removed.</string>
+<string name="comic.updated">Comic %1$s updated.</string>
+<string name="comic.added">Comic %1$s added.</string>
+
+<string name="ok">OK</string>
+
+<string name="yes">Yes</string>
+<string name="no">No</string>
+</resources>

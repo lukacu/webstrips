@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_height="wrap_content" android:layout_margin="3px" android:padding="3px" android:layout_width="fill_parent">
+<ImageView android:src="@drawable/noimage" android:id="@+id/comiclist.image" android:scaleType="fitXY" android:layout_height="64px" android:layout_width="64px"></ImageView>
+<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:layout_margin="5px"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Comic name" android:textSize="25px" android:id="@+id/comiclist.name"></TextView><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Comic author" android:id="@+id/comiclist.author"></TextView></LinearLayout>
+
+
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:id="@+id/comiclist.new"></TextView>
+</LinearLayout>

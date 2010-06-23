@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:titleCondensed="@string/list.browse_short" android:id="@+id/list.browse" android:title="@string/list.browse"></item><item android:titleCondensed="@string/list.info_short" android:id="@+id/list.info" android:title="@string/list.info"></item><item android:titleCondensed="@string/list.webpage_short" android:title="@string/list.webpage" android:id="@+id/list.webpage"></item>
+
+<item android:titleCondensed="@string/list.remove_short" android:id="@+id/list.remove" android:title="@string/list.remove"></item>
+
+</menu>

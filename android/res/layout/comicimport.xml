@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content" android:layout_height="wrap_content"
+	android:padding="20px" android:orientation="vertical"
+	android:layout_gravity="center">
+	<TextView android:id="@+id/TextView01" android:text="@string/import.heading"
+		android:gravity="center" android:layout_height="fill_parent"
+		android:layout_width="fill_parent" android:textStyle="bold"></TextView>
+	<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:src="@drawable/noimage" android:layout_gravity="center" android:padding="5px" android:id="@+id/import.image"></ImageView>
+	<TextView android:id="@+id/import.question"
+		android:text="@string/import.question" android:layout_height="fill_parent"
+		android:lines="3" android:gravity="center" android:layout_width="wrap_content"></TextView>
+	<LinearLayout android:id="@+id/LinearLayout01"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_gravity="center" android:padding="5px">
+		<Button android:id="@+id/import.yes" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:text="@string/yes"
+			android:minWidth="70px"></Button>
+		<Button android:id="@+id/import.no" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:text="@string/no"
+			android:minWidth="70px"></Button>
+	</LinearLayout>
+
+</LinearLayout>

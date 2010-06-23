@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="48px"
+   height="48px"
+   id="svg2816"
+   version="1.1"
+   inkscape:version="0.47pre4 r22446"
+   sodipodi:docname="menu_first.svg"
+   inkscape:export-filename="/home/lukacu/workspace/webstrips-android/res/drawable/menu_first.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#c4c4c4"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7"
+     inkscape:cx="-6.2656458"
+     inkscape:cy="43.074916"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:grid-bbox="true"
+     inkscape:document-units="px"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1125"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1">
+    <sodipodi:guide
+       id="guide2826"
+       position="6,27.571429"
+       orientation="1,0" />
+    <sodipodi:guide
+       id="guide2828"
+       position="42,19.571429"
+       orientation="1,0" />
+    <sodipodi:guide
+       id="guide2830"
+       position="21.857143,42"
+       orientation="0,1" />
+    <sodipodi:guide
+       id="guide2832"
+       position="22.142857,6"
+       orientation="0,1" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2818">
+    <linearGradient
+       id="linearGradient3608">
+      <stop
+         id="stop3610"
+         offset="0"
+         style="stop-color:#a3a3a3;stop-opacity:1;" />
+      <stop
+         id="stop3612"
+         offset="1"
+         style="stop-color:#787878;stop-opacity:1;" />
+    </linearGradient>
+    <inkscape:perspective
+       id="perspective2824"
+       inkscape:persp3d-origin="24 : 16 : 1"
+       inkscape:vp_z="48 : 24 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 24 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       y2="23.857143"
+       x2="38.857143"
+       y1="23.857143"
+       x1="8.8571434"
+       id="linearGradient3614"
+       xlink:href="#linearGradient3608"
+       inkscape:collect="always" />
+    <filter
+       id="filter5839"
+       inkscape:label="Inner Shadow"
+       inkscape:menu="Shadows and Glows"
+       inkscape:menu-tooltip="Adds a colorizable drop shadow inside"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         id="feGaussianBlur5841"
+         stdDeviation="1"
+         result="result8" />
+      <feOffset
+         id="feOffset5843"
+         dx="0"
+         dy="1"
+         result="result11" />
+      <feComposite
+         id="feComposite5845"
+         in2="result11"
+         result="result6"
+         in="SourceGraphic"
+         operator="in" />
+      <feFlood
+         id="feFlood5847"
+         result="result10"
+         in="result6"
+         flood-opacity="0.77852348993288589"
+         flood-color="rgb(0,0,0)" />
+      <feBlend
+         id="feBlend5849"
+         in2="result10"
+         mode="normal"
+         in="result6"
+         result="result12" />
+      <feComposite
+         id="feComposite5851"
+         in2="SourceGraphic"
+         result="result2"
+         operator="in" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3608"
+       id="linearGradient5960"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-1.2,0,0,1.2,52.628572,-4.6285721)"
+       x1="23.857143"
+       y1="12.904762"
+       x2="23.857143"
+       y2="34.690475" />
+  </defs>
+  <metadata
+     id="metadata2821">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1"
+     id="layer1">
+    <path
+       style="fill:url(#linearGradient5960);fill-opacity:1;stroke:none;filter:url(#filter5839)"
+       d="M 24 6 C 14.058875 6 6 14.058875 6 24 C 6 33.941125 14.058875 42 24 42 C 33.941125 42 42 33.941125 42 24 C 42 14.058875 33.941125 6 24 6 z M 23.71875 13.71875 C 29.477806 13.71875 34.125 18.365944 34.125 24.125 C 34.125 29.884056 29.477806 34.5625 23.71875 34.5625 C 17.959694 34.5625 13.3125 29.884056 13.3125 24.125 C 13.3125 18.365944 17.959694 13.71875 23.71875 13.71875 z M 23.71875 16.28125 C 19.375855 16.28125 15.84375 19.782105 15.84375 24.125 C 15.84375 28.467895 19.375855 32 23.71875 32 C 28.061645 32 31.59375 28.467895 31.59375 24.125 C 31.59375 19.782105 28.061645 16.28125 23.71875 16.28125 z M 23.71875 20.21875 C 25.890198 20.21875 27.65625 21.953552 27.65625 24.125 C 27.65625 26.296448 25.890198 28.0625 23.71875 28.0625 C 21.547303 28.0625 19.78125 26.296448 19.78125 24.125 C 19.78125 21.953552 21.547303 20.21875 23.71875 20.21875 z "
+       id="path2834" />
+  </g>
+</svg>

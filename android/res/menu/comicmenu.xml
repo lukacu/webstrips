@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+<item android:menuCategory="container" android:title="@string/menu.list" android:id="@+id/comiclist" android:titleCondensed="@string/menu.list_short" android:icon="@drawable/menu_list"></item><item android:id="@+id/first" android:title="@string/menu.first" android:titleCondensed="@string/menu.first_short" android:menuCategory="alternative" android:icon="@drawable/menu_first"></item><item android:id="@+id/previous" android:icon="@drawable/menu_previous" android:menuCategory="alternative" android:titleCondensed="@string/menu.previous_short" android:title="@string/menu.previous"></item><item android:titleCondensed="@string/menu.webpage_short" android:title="@string/menu.webpage" android:id="@+id/webpage" android:menuCategory="alternative" android:icon="@drawable/menu_online"></item><item android:id="@+id/next" android:icon="@drawable/menu_next" android:menuCategory="alternative" android:titleCondensed="@string/menu.next_short" android:title="@string/menu.next"></item><item android:id="@+id/newest" android:title="@string/menu.newest" android:titleCondensed="@string/menu.newest_short" android:menuCategory="alternative" android:icon="@drawable/menu_newest"></item>
+
+
+</menu>
