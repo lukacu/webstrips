@@ -83,7 +83,7 @@ public class WebStripsService extends Service {
     	
     	public Comic getComic() {
     		return comic;
-    	}
+    	}   
     	
     }
 
