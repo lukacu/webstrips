@@ -238,14 +238,14 @@ public class ComicListActivity extends ListActivity {
 			Uri uri = Uri.parse("comic://" + comic.getComicIdentifier()
 					+ "/anchor");
 
-			intent = new Intent("COMIC", uri, this, ComicViewerActivity.class);
+			intent = new Intent("org.android.VIEW", uri, this, ComicViewerActivity.class);
 
 			startActivity(intent);
 			break;
 		case R.id.list_info:
-			/*intent = new Intent("INFO", Uri.parse("comic://" + comic.getComicIdentifier()), this, ComicViewerActivity.class);
+			intent = new Intent("org.android.INFO", Uri.parse("comic://" + comic.getComicIdentifier()), this, ComicDetailsActivity.class);
 
-			startActivity(intent);*/
+			startActivity(intent);
 			break;
 		case R.id.list_webpage:
 			String url = comic.getComicHomapage();

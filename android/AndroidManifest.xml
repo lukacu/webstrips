@@ -17,9 +17,14 @@
 		
 		<activity android:name="ComicViewerActivity" android:launchMode="singleTask" android:allowTaskReparenting="false">
 			<intent-filter>
-
 			<action android:name="org.webstrips.VIEW"></action>
-</intent-filter>
+			</intent-filter>
+		</activity>
+
+		<activity android:name="ComicDetailsActivity" android:launchMode="singleTask" android:allowTaskReparenting="false">
+			<intent-filter>
+			<action android:name="org.webstrips.INFO"></action>
+			</intent-filter>
 		</activity>
 
 		<activity android:name="ComicImportActivity"

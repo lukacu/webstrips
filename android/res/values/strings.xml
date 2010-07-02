@@ -26,6 +26,10 @@
 <string name="import.error.body">WebStrips cannot import this file as a comic bundle. Probably it is corrupt or inappropriate.</string>
 
 
+<string name="details.author">by %1$s.</string>
+<string name="details.homepage">Available on %1$s.</string>
+<string name="details.engine">Engine author: %1$s, version %2$d / %3$d.</string>
+
 <string name="list.info">More information</string>
 <string name="list.info_short">Info</string>
 <string name="list.webpage">Visit online</string>

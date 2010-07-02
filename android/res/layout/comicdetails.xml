@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:padding="20px" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_gravity="top">
+	
+	<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:src="@drawable/noimage" android:layout_gravity="center" android:padding="5px" android:id="@+id/details.image"></ImageView><TextView android:gravity="center" android:layout_width="fill_parent" android:textStyle="bold" android:id="@+id/details.name" android:layout_height="wrap_content" android:textSize="20sp"></TextView>
+	<TextView android:id="@+id/details.author" android:text="@string/details.author" android:lines="1" android:paddingBottom="5px" android:paddingTop="10px" android:layout_height="wrap_content" android:layout_width="fill_parent" android:gravity="center" android:textSize="16sp"></TextView>
+	
+
+<TextView android:paddingBottom="5px" android:id="@+id/details.homepage" android:text="@string/details.homepage" android:layout_height="wrap_content" android:layout_width="fill_parent" android:textSize="13sp"></TextView>
+<TextView android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/details.description" android:textSize="13sp"></TextView>
+
+<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_gravity="bottom"><TextView android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/details.engine" android:text="@string/details.engine" android:paddingTop="20px" android:textSize="12sp" android:layout_gravity="bottom" android:gravity="center"></TextView></LinearLayout>
+</LinearLayout>
