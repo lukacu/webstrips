@@ -273,7 +273,9 @@ public class ComicManager implements Iterable<Comic>, Saveable {
 					
 				} else {
 				
-					bundle.unpack(StorageManager.getStorageManager().getStorageDirectory());
+					bundle.unpack(StorageManager.getStorageManager().getStorageDirectory(), installed.getComicIdentifier());
+					
+					reloadComic(installed);
 					
 					return true;
 				}
@@ -305,7 +307,7 @@ public class ComicManager implements Iterable<Comic>, Saveable {
 			try {
 				l.comicRemoved(this, comic);
 			} catch (Exception e) {
-				// TODO: log
+				WebStrips.getLogger().report(e);
 			}
 		}
 		

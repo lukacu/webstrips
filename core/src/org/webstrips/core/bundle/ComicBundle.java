@@ -197,20 +197,27 @@ public class ComicBundle {
 		return new ByteArrayInputStream(imageData);
 	}
 	
+	public String unpack(File destination) throws ComicBundleException {
+		
+		UUID uuid = UUID.randomUUID();
+		
+		String identifier = description.getShortName() + "-" + uuid.toString();
+		
+		return unpack(destination, identifier);
+	}
+	
 	/**
 	 * Unpack.
 	 * 
-	 * @param destination
-	 *            the identifier (comic id + "-" + uuid)
+	 * @param destination the destination directory
+	 * @param identifier the identifier (comic id + "-" + uuid)
 	 * 
 	 * @throws ComicBundleException
 	 *             the comic bundle exception
 	 */
-	public String unpack(File destination) throws ComicBundleException {
+	public String unpack(File destination, String identifier) throws ComicBundleException {
 
-		UUID uuid = UUID.randomUUID();
-		
-		String identifier = description.getShortName() + "-" + uuid.toString();
+
 
 		if (!destination.isDirectory())
 			throw new ComicBundleException("Destination must be a directory",
