@@ -39,6 +39,8 @@
 <string name="list.browse">Browse comic</string>
 <string name="list.browse_short">Browse</string>
 
+<string name="list.empty"><b>No comics installed.</b> <br />You can download comics from the <a href="http://webstrips.tnode.com">WebStrips homepage</a>.</string>
+
 <string name="comic.removed">Comic %1$s removed.</string>
 <string name="comic.updated">Comic %1$s updated.</string>
 <string name="comic.added">Comic %1$s added.</string>

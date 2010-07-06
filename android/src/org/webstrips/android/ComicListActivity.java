@@ -170,7 +170,7 @@ public class ComicListActivity extends ListActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		setContentView(R.layout.comiclist);
 	}
 
 	@Override
@@ -184,6 +184,7 @@ public class ComicListActivity extends ListActivity {
 
 		bindService(new Intent("org.webstrips.MANAGER", null, this,
 				WebStripsService.class), connection, 0);
+		
 	}
 
 	@Override
