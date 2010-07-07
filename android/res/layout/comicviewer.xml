@@ -1,21 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content">
-<org.webstrips.android.StripPane
-  class="org.webstrips.android.StripPane" 
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  android:padding="10dip"
-  android:scrollbars="vertical"
-  android:fadingEdge="vertical" android:id="@+id/comicPane">
-</org.webstrips.android.StripPane>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/comicCenterLayout"><ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:id="@+id/transferProgress" android:max="100"></ProgressBar>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="fill_parent" android:layout_width="fill_parent">
+	<org.webstrips.android.StripPane class="org.webstrips.android.StripPane"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:padding="10dip" android:scrollbars="vertical"
+		android:fadingEdge="vertical" android:id="@+id/comicPane">
+	</org.webstrips.android.StripPane>
+	<RelativeLayout android:id="@+id/comicCenterLayout"
+		android:layout_gravity="center" android:layout_height="fill_parent"
+		android:layout_width="fill_parent">
+		<ProgressBar android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:layout_centerInParent="true"
+			android:id="@+id/transferProgress" android:max="100"></ProgressBar>
+	</RelativeLayout>
+	<RelativeLayout android:id="@+id/viewer.overlaylayout"
+		android:layout_height="fill_parent" android:layout_width="fill_parent"
+		android:visibility="visible">
+		<ImageView android:id="@+id/ImageView01"
+			android:layout_height="wrap_content" android:layout_width="wrap_content"
+			android:src="@drawable/overlay_previous"
+			android:layout_centerVertical="true" android:layout_marginLeft="5px"></ImageView>
+		<RelativeLayout android:layout_height="wrap_content"
+			android:id="@+id/RelativeLayout01" android:layout_alignParentTop="true"
+			android:layout_width="fill_parent" android:padding="5px"
+			android:background="#99FFFFFF">
+			<TextView android:layout_height="wrap_content"
+				android:layout_above="@+id/ImageView01" android:id="@+id/view.title"
+				android:text="aaa" android:textStyle="bold" android:lines="1"
+				android:layout_width="fill_parent" android:textColor="#FF000000"></TextView>
+		</RelativeLayout>
+		<ImageView android:id="@+id/ImageView03"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:src="@drawable/overlay_next" android:layout_gravity="right"
+			android:layout_alignParentRight="true" android:layout_centerVertical="true"
+			android:layout_marginRight="5px"></ImageView>
 
-</RelativeLayout>
 
-<RelativeLayout android:id="@+id/viewer.overlaylayout" android:layout_height="fill_parent" android:layout_width="fill_parent" android:padding="5px" android:visibility="invisible"><ImageView android:id="@+id/ImageView01" android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/overlay_previous" android:layout_centerVertical="true"></ImageView><ImageView android:id="@+id/ImageView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/overlay_info" android:layout_gravity="top" android:layout_centerHorizontal="true"></ImageView><ImageView android:id="@+id/ImageView03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/overlay_next" android:layout_gravity="right" android:layout_alignParentRight="true" android:layout_centerVertical="true"></ImageView>
 
 </RelativeLayout>
 </FrameLayout>

@@ -7,7 +7,6 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="32px"
@@ -17,8 +16,8 @@
    inkscape:version="0.47pre4 r22446"
    sodipodi:docname="overlay_next.svg"
    inkscape:export-filename="/home/lukacu/workspace/webstrips-android/res/drawable/overlay_next.png"
-   inkscape:export-xdpi="90"
-   inkscape:export-ydpi="90">
+   inkscape:export-xdpi="100.15425"
+   inkscape:export-ydpi="100.15425">
   <defs
      id="defs4582">
     <linearGradient
@@ -46,15 +45,6 @@
        inkscape:vp_y="0 : 1000 : 0"
        inkscape:vp_x="0 : 0.5 : 1"
        sodipodi:type="inkscape:persp3d" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient5126"
-       id="linearGradient5132"
-       x1="24.201178"
-       y1="27.802748"
-       x2="12.859667"
-       y2="5.9234533"
-       gradientUnits="userSpaceOnUse" />
     <filter
        inkscape:collect="always"
        id="filter5136"
@@ -84,7 +74,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="11.197802"
-     inkscape:cx="11.31158"
+     inkscape:cx="-4.5397451"
      inkscape:cy="25.198234"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -92,8 +82,8 @@
      inkscape:document-units="px"
      inkscape:window-width="1348"
      inkscape:window-height="917"
-     inkscape:window-x="535"
-     inkscape:window-y="165"
+     inkscape:window-x="131"
+     inkscape:window-y="137"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata4585">
@@ -112,18 +102,8 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer">
     <path
-       transform="matrix(1,0,0,1.0028275,-1.2502454,-0.09069038)"
-       d="m 31.702651,16.282629 a 14.377822,14.377822 0 1 1 -28.7556438,0 14.377822,14.377822 0 1 1 28.7556438,0 z"
-       sodipodi:ry="14.377822"
-       sodipodi:rx="14.377822"
-       sodipodi:cy="16.282629"
-       sodipodi:cx="17.324829"
-       id="path5140"
-       style="fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter5142)"
-       sodipodi:type="arc" />
-    <path
        sodipodi:type="arc"
-       style="fill:url(#linearGradient5132);fill-opacity:1;stroke:none"
+       style="fill:#f1f1f1;fill-opacity:0.65490198;stroke:none"
        id="path5124"
        sodipodi:cx="17.324829"
        sodipodi:cy="16.282629"

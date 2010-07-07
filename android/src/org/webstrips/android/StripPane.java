@@ -13,65 +13,81 @@ import android.view.SurfaceView;
 
 public class StripPane extends SurfaceView implements SurfaceHolder.Callback {
 
-	private CanvasThread thread;
 
 	private boolean dirty = true;
 
 	private static Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-	
-	private static class StipPaneData { 
-	
+
+	private static Paint frozenpaint;
+
+	static {
+
+		frozenpaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+		frozenpaint.setAlpha(100);
+
+	}
+
+	private boolean frozen = false;
+
+	private static class StipPaneData {
+
 		public PointF offset = new PointF();
-	
+
 		public FloatTracker zoom = new FloatTracker(1, 1);
-	
+
 		public Bitmap comicStrip;
 
 	}
 
-	private FloatTracker velocityX = new FloatTracker(0, 0, 0.2f, 0.5f), velocityY = new FloatTracker(0, 0, 0.2f, 0.5f);
-	
+	private FloatTracker velocityX = new FloatTracker(0, 0, 0.2f, 0.5f),
+			velocityY = new FloatTracker(0, 0, 0.2f, 0.5f);
+
 	private StipPaneData data = new StipPaneData();
 
 	public StripPane(Context context, AttributeSet attr) {
 		super(context, attr);
 		getHolder().addCallback(this);
-		thread = new CanvasThread(getHolder());
-
 
 	}
 
 	private RectF canvasRect = new RectF();
-	
+
 	public void setDirty() {
 		dirty = true;
 	}
-	
+
 	public void setVelocity(float vx, float vy) {
-		
+
 		velocityX.setValue(vx);
 		velocityY.setValue(vy);
 		dirty = true;
 	}
-	
+
+	public void setFrozen(boolean frozen) {
+		this.frozen = frozen;
+		this.dirty = true;
+	}
+
 	public Object getPersistentData() {
 		return data;
 	}
-	
+
 	public void setPersistentData(Object o) {
 		if (o instanceof StripPane.StipPaneData) {
 			data = (StripPane.StipPaneData) o;
 			dirty = true;
 		}
 	}
-	
+
 	@Override
 	public void onDraw(Canvas canvas) {
 		if (data.comicStrip == null)
 			return;
 		canvas.drawColor(Color.BLACK);
-		
-		canvas.drawBitmap(data.comicStrip, null, canvasRect, paint);
+
+		canvas.drawBitmap(data.comicStrip, null, canvasRect,
+				frozen ? frozenpaint : paint);
 	}
 
 	public void setComicStrip(Bitmap strip) {
@@ -79,15 +95,23 @@ public class StripPane extends SurfaceView implements SurfaceHolder.Callback {
 			data.comicStrip = strip;
 
 			data.comicStrip = strip;
-			
+
 			data.offset.x = 0;
 			data.offset.y = 0;
 			dirty = true;
 		}
 	}
-	
+
 	public Bitmap getComicStrip() {
 		return data.comicStrip;
+	}
+
+	public boolean isEmpty() {
+		return data.comicStrip == null;
+	}
+	
+	public boolean isFrozen() {
+		return frozen;
 	}
 	
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,
@@ -96,113 +120,83 @@ public class StripPane extends SurfaceView implements SurfaceHolder.Callback {
 	}
 
 	public void surfaceCreated(SurfaceHolder holder) {
-		thread = new CanvasThread(getHolder());
-		thread.run = true;
-		thread.start();
 		dirty = true;
+		canDraw = true;
 	}
 
 	public void surfaceDestroyed(SurfaceHolder holder) {
-		boolean retry = true;
-		thread.run = false;
-		while (retry) {
-			try {
-				thread.join();
-				retry = false;
-			} catch (InterruptedException e) {
-				// we will try it again and again...
-			}
-		}
+		canDraw = false;
 	}
-
+	
+	private boolean canDraw = false;
+	
 	private static final long FRAME_LENGTH = 1000 / 20;
-	
-	class CanvasThread extends Thread {
 
-		private SurfaceHolder surfaceHolder;
+	public void tick() {
 
-		private boolean run = false;
+		if (!canDraw)
+			return;
 		
-		public CanvasThread(SurfaceHolder surfaceHolder) {
-			this.surfaceHolder = surfaceHolder;
-		}
+		if (!frozen)
+			dirty |= !data.zoom.onGoal() || !velocityX.onGoal()
+					|| !velocityY.onGoal();
 
-		@Override
-		public void run() {
+		Canvas c = null;
 
-			Canvas c;
+		if (dirty) {
 
-			while (run) {
+			try {
 
-				c = null;
+				data.zoom.track();
 
-				long miliseconds = System.currentTimeMillis();
-				
-				dirty |= !data.zoom.onGoal() || !velocityX.onGoal() || !velocityY.onGoal();
-				
-				if (dirty) {
+				c = getHolder().lockCanvas(null);
+				synchronized (this) {
 
-					try {
+					if (data.comicStrip != null) {
+						float width = data.zoom.getValue()
+								* data.comicStrip.getWidth();
+						float height = data.zoom.getValue()
+								* data.comicStrip.getHeight();
 
-						data.zoom.track();
-						
-						c = surfaceHolder.lockCanvas(null);
-						synchronized (surfaceHolder) {
-							
-							if (data.comicStrip != null) {
-								float width = data.zoom.getValue() * data.comicStrip.getWidth(); 
-								float height = data.zoom.getValue() * data.comicStrip.getHeight();
-								
-								data.offset.x -= velocityX.track();
-								data.offset.y -= velocityY.track();
-								
-								data.offset.x = c.getWidth() > width ? -((c.getWidth() - width) / 2) :
-									Math.min(width - c.getWidth(), Math.max(0, data.offset.x));
-
-								data.offset.y = c.getHeight() > height ? -((c.getHeight() - height) / 2) :
-									Math.min(height - c.getHeight(), Math.max(0, data.offset.y));
-								
-								canvasRect.left = -data.offset.x;
-								canvasRect.top = -data.offset.y;
-								canvasRect.right = -data.offset.x + width;
-								canvasRect.bottom = -data.offset.y + height;							
-							}
-							
-							
-							
-							onDraw(c);
-							dirty = false;
+						if (!frozen) {
+							data.offset.x -= velocityX.track();
+							data.offset.y -= velocityY.track();
 						}
 
-					} finally {
+						data.offset.x = c.getWidth() > width ? -((c.getWidth() - width) / 2)
+								: Math.min(width - c.getWidth(), Math.max(0,
+										data.offset.x));
 
-						// do this in a finally so that if an exception is
-						// thrown
-						// during the above, we don't leave the Surface in an
-						// inconsistent state
+						data.offset.y = c.getHeight() > height ? -((c
+								.getHeight() - height) / 2) : Math.min(height
+								- c.getHeight(), Math.max(0, data.offset.y));
 
-						if (c != null) {
-
-							surfaceHolder.unlockCanvasAndPost(c);
-
-						}
-
+						canvasRect.left = -data.offset.x;
+						canvasRect.top = -data.offset.y;
+						canvasRect.right = -data.offset.x + width;
+						canvasRect.bottom = -data.offset.y + height;
 					}
+
+					onDraw(c);
+					dirty = false;
 				}
 
-				try {
-					sleep(Math.min(FRAME_LENGTH, Math.abs(System.currentTimeMillis() - miliseconds)));
-				} catch (InterruptedException e) {
-					break;
+			} finally {
+
+				// do this in a finally so that if an exception is
+				// thrown
+				// during the above, we don't leave the Surface in an
+				// inconsistent state
+
+				if (c != null) {
+
+					getHolder().unlockCanvasAndPost(c);
+
 				}
-				
+
 			}
-
 		}
 
 	}
 
-
-	
-	
 }

@@ -34,11 +34,16 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class ComicViewerActivity extends Activity {
 
+	private CanvasThread thread;
+	
 	private StripPane pane;
 
+	private TextView title;
+	
 	private RelativeLayout overlay;
 
 	private ProgressBar progress;
@@ -86,9 +91,24 @@ public class ComicViewerActivity extends Activity {
 				progress.setProgress(p);
 			}
 			progress.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
+			pane.setFrozen(visible);
 		}
 	};
 
+	final Handler overlayHandler = new Handler() {
+		public void handleMessage(Message msg) {
+			boolean visible = msg.getData().getBoolean("visible");
+			overlay.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
+		}
+	};
+	
+	final Handler comicHandler = new Handler() {
+		public void handleMessage(Message msg) {
+			String t = msg.getData().getString("title");
+			title.setText(t);
+		}
+	};
+	
 	final Handler errorHandler = new Handler() {
 		public void handleMessage(Message msg) {
 			AlertDialog.Builder dialog = new AlertDialog.Builder(ComicViewerActivity.this);
@@ -245,6 +265,8 @@ public class ComicViewerActivity extends Activity {
 		overlay.setVisibility(View.INVISIBLE);
 
 		progress.setVisibility(View.INVISIBLE);
+		
+		title = (TextView) findViewById(R.id.view_title);
 	}
 
 	@Override
@@ -252,9 +274,22 @@ public class ComicViewerActivity extends Activity {
 		super.onSaveInstanceState(outState);
 
 	}
-
+	
 	@Override
 	protected void onPause() {
+		if (thread != null) {
+			boolean retry = true;
+			thread.run = false;
+			while (retry) {
+				try {
+					thread.join();
+					retry = false;
+				} catch (InterruptedException e) {
+					// we will try it again and again...
+				}
+			}
+		}
+		
 		super.onPause();
 		try {
 			WebStrips.getSettings().commit();
@@ -266,6 +301,7 @@ public class ComicViewerActivity extends Activity {
 
 		currentStrip = null;
 		expectedStrip = null;
+
 
 	}
 
@@ -291,6 +327,9 @@ public class ComicViewerActivity extends Activity {
 				ComicViewerActivity.this, WebStripsService.class), connection,
 				0);
 
+		thread = new CanvasThread();
+		thread.run = true;
+		thread.start();
 	}
 
 	@Override
@@ -482,11 +521,16 @@ public class ComicViewerActivity extends Activity {
 
 		String title = EscapeSequences
 				.stripAmpersandSequence(((strip == null) ? "" : strip
-						.getTitle()
-						+ " - "));
+						.getTitle()));
 
 		setTitle(control.getComic().getComicName() + " - " + title);
 
+		Message msg = comicHandler.obtainMessage();
+		Bundle b = new Bundle();
+		b.putString("title", title);
+		msg.setData(b);
+		comicHandler.sendMessage(msg);
+		
 		currentStrip = strip;
 		expectedStrip = currentStrip.getIdentifier();
 
@@ -621,4 +665,59 @@ public class ComicViewerActivity extends Activity {
 		return connection != null && control != null;
 	}
 
+	private static final long FRAME_LENGTH = 1000 / 25;
+	
+	private static final int OVERLAY_DELAY = 80;
+	
+	private int overlayCountdown = OVERLAY_DELAY;
+	
+	class CanvasThread extends Thread {
+
+		private boolean run = false;
+		
+		@Override
+		public void run() {
+
+			while (run) {
+
+				long miliseconds = System.currentTimeMillis();
+				
+				if (pane != null)
+					pane.tick();
+
+				if (!dragging && !pane.isEmpty() && !pane.isFrozen()) {
+					if (overlayCountdown > -1)
+						overlayCountdown--;
+				} else {
+					if (overlayCountdown != OVERLAY_DELAY) {
+						Message msg = overlayHandler.obtainMessage();
+						Bundle b = new Bundle();
+						b.putBoolean("visible", false);
+						msg.setData(b);
+						overlayHandler.sendMessage(msg);
+					}
+					
+					overlayCountdown = OVERLAY_DELAY;
+				}
+				
+				if (overlayCountdown == 0) {
+					Message msg = overlayHandler.obtainMessage();
+					Bundle b = new Bundle();
+					b.putBoolean("visible", true);
+					msg.setData(b);
+					overlayHandler.sendMessage(msg);
+				}
+				
+				try {
+					long sl = Math.max(0, FRAME_LENGTH - Math.abs(System.currentTimeMillis() - miliseconds));
+					sleep(sl);
+				} catch (InterruptedException e) {
+					break;
+				}
+				
+			}
+
+		}
+
+	}
 }
